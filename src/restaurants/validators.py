@@ -15,7 +15,7 @@ def validate_email(value):
 
 
 
-CATEGORIES = ['Mexican', 'Asian', 'American', 'Whatever']
+CATEGORIES = ['Polska', 'Chińczyk', 'Arab', '-']
 
 def validate_category(value):
     cat = value.capitalize()

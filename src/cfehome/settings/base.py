@@ -50,6 +50,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cfehome.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
