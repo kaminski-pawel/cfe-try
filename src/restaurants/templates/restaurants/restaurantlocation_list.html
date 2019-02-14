@@ -2,7 +2,7 @@
 {% block head_title %}Restaurants || {{ block.super }}{% endblock head_title %}
 
 {% block content %}
-<h1>restaurants list</h1>
+<h1>My Restaurants <small><a href='{% url "restaurants:create" %}'>Add</a></small></h1>
 {% include 'snippets/sidebar.html' %}
 
 <ul>
@@ -11,6 +11,8 @@
   <!-- <li><a href='{% url "restaurants:detail" slug=obj.slug %}'>{{ obj.title }}</a><br/> -->
   <!-- <li><a href='/restaurants/{{ obj.slug }}/'>{{ obj.title }}</a><br/> -->
   {{ obj.name }}</li>
+{% empty %}
+  <li><a href='{% url "restaurants:create" %}'>Add New</a></li>
 {% endfor %}
 </ul>
 {% endblock  %}
