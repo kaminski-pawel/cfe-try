@@ -34,7 +34,7 @@ class RegisterView(CreateView):
     success_url = "/"
 
     def dispatch(self, *args, **kwargs):
-        # if user is authenticated redirect to login page
+        """If user is authenticated redirect to login page"""
         if self.request.user.is_authenticated():
             return redirect('/login')
         return super(RegisterView, self).dispatch(*args, **kwargs)

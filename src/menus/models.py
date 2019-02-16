@@ -15,16 +15,20 @@ class Item(models.Model):
     updated         = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-updated', '-timestamp']
+        ordering = ['-updated', '-timestamp'] # '-' at beggining means 'reversed'
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('menus:detail', kwargs={'pk': self.pk})
+        """Url to redirect to after creating new Item
+        Can be used in template as {{ object.get_absolute_url }}"""
+        return reverse('menus:detail', kwargs={'pk': self.pk}) # kwargs are passing the slug
 
     def get_contents(self):
+        """When getting `contents` instance, the processing will be run"""
         return self.contents.split(',')
 
     def get_excludes(self):
+        """When getting `contents` instance, the processing will be run"""
         return self.excludes.split(',')

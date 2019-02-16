@@ -9,9 +9,9 @@ def validate_even(value):
 
 
 def validate_email(value):
-        email = value
-        if ".edu" in email:
-            raise ValidationError("We do not accept edu emails")
+    email = value
+    if ".edu" in email:
+        raise ValidationError("We do not accept edu emails")
 
 
 

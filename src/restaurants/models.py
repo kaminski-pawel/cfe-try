@@ -29,6 +29,7 @@ class RestaurantLocationManager(models.Manager):
         return RestaurantLocationQuerySet(self.model, using=self._db)
 
     def search(self, query):
+        """Add interface for searching"""
         return self.get_queryset().search(query)
 
 class RestaurantLocation(models.Model):

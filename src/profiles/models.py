@@ -10,6 +10,8 @@ User = settings.AUTH_USER_MODEL
 
 class ProfileManager(models.Manager):
     def toggle_follow(self, request_user, username_to_toggle):
+        """Additional interface to add/remove ManyToMany relationship
+        between request_user and username_to_toggle"""
         profile_ = Profile.objects.get(user__username__iexact=username_to_toggle)
         user = request_user
         is_following = False
@@ -37,7 +39,7 @@ class Profile(models.Model):
         return self.user.username
 
     def send_activation_email(self):
-        # custom method to send email upon registration
+        """Custom method to send email upon registration"""
         if not self.activated:
             self.activation_key = code_generator()
             self.save()
@@ -58,6 +60,7 @@ class Profile(models.Model):
             return sent_mail
 
 def post_save_user_receiver(sender, instance, created, *args, **kwargs):
+    """After the User instance is created, create Profile inst. for that User"""
     if created:
         profile, is_created = Profile.objects.get_or_create(user=instance)
         default_user_profile = Profile.objects.get_or_create(user__id=1)[0]
